@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1C2128">
+<meta name="description" content="Agenda escolar semanal de Gianna · 5°A">
+<title>Agenda Gianna · 20–26 Abril 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FBF7F2;
+    --bg-card: #FFFFFF;
+    --ink: #1C2128;
+    --ink-soft: #4A5260;
+    --ink-mute: #8B94A3;
+    --line: #E8E2D8;
+    --accent: #2C3E50;
+
+    --sociales: #7FB685;
+    --mate:     #E89B5E;
+    --espanol:  #E5C050;
+    --listen:   #8FB8DC;
+    --english:  #5B8FC9;
+    --arte:     #C98FB8;
+    --tec:      #9D8BC2;
+
+    --sumativa:  #D64545;
+    --formativa: #3B82A0;
+    --asignacion:#8B94A3;
+    --recreacion:#7FB685;
+
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at top left, rgba(233, 192, 80, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(127, 182, 133, 0.06) 0%, transparent 50%);
+    color: var(--ink);
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 20px 16px calc(96px + var(--safe-bottom));
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ============================
+     HEADER
+     ============================ */
+  header {
+    padding: 20px 0 18px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--line);
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(28px, 5.5vw, 52px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--mate);
+  }
+
+  .meta {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(14px, 2.8vw, 18px);
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  .resumen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .chip .num {
+    background: var(--ink);
+    color: white;
+    padding: 1px 7px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* ============================
+     LEYENDA (colapsable en móvil)
+     ============================ */
+  .leyenda-wrap { margin-bottom: 20px; }
+
+  .leyenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    padding: 11px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .leyenda span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .leyenda .badge {
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: white;
+  }
+
+  /* ============================
+     NAV DÍAS (scroll horizontal)
+     ============================ */
+  .nav-dias {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+
+  .nav-dias a {
+    padding: 10px 4px;
+    border-radius: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 700;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    min-width: 0;
+  }
+
+  .nav-dias a:hover, .nav-dias a:active {
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  .nav-dias a .dia-num {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(18px, 4vw, 22px);
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .nav-dias a .dia-lbl {
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .nav-dias a .dia-count {
+    font-size: 9px;
+    color: var(--ink-mute);
+    font-weight: 600;
+  }
+
+  /* ============================
+     DÍA
+     ============================ */
+  .dia {
+    margin-bottom: 36px;
+    scroll-margin-top: 16px;
+  }
+
+  .dia-header {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .dia-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 5.5vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .dia-header .fecha {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-mute);
+    font-size: clamp(15px, 3.5vw, 20px);
+  }
+
+  .dia-header .count {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ============================
+     ACTIVIDAD
+     ============================ */
+  .actividades { display: grid; gap: 14px; }
+
+  .actividad {
+    background: var(--bg-card);
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 6px 1fr;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .actividad:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -12px rgba(28, 33, 40, 0.15);
+  }
+
+  .barra-materia { background: var(--materia-color, var(--ink-mute)); }
+
+  .actividad-body { padding: 16px 18px; min-width: 0; }
+
+  .actividad-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .materia-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .materia-tag::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--materia-color, var(--ink-mute));
+    flex-shrink: 0;
+  }
+
+  .badge {
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: white;
+  }
+  .badge.sumativa    { background: var(--sumativa); }
+  .badge.formativa   { background: var(--formativa); }
+  .badge.asignacion  { background: var(--asignacion); }
+  .badge.recreacion  { background: var(--recreacion); }
+
+  .profesor {
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-style: italic;
+    margin-left: auto;
+  }
+
+  .actividad h3 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(18px, 4vw, 22px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    color: var(--ink);
+    word-wrap: break-word;
+  }
+
+  .actividad .detalle {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+
+  .actividad .detalle p + p { margin-top: 8px; }
+
+  .seccion {
+    margin-top: 12px;
+    padding: 11px 13px;
+    border-radius: 8px;
+    background: rgba(232, 226, 216, 0.3);
+    border-left: 3px solid var(--materia-color, var(--ink-mute));
+  }
+
+  .seccion-titulo {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .seccion ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .seccion li {
+    font-size: 14px;
+    color: var(--ink);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .seccion li::before {
+    content: '▪';
+    position: absolute;
+    left: 0;
+    color: var(--materia-color, var(--ink-mute));
+    font-weight: 900;
+  }
+
+  .seccion a {
+    color: var(--english);
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 1px dashed var(--english);
+    word-break: break-all;
+  }
+  .seccion a:hover { color: var(--ink); border-color: var(--ink); }
+
+  .roles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .rol {
+    background: white;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    border: 1px solid var(--line);
+  }
+
+  .rol strong {
+    display: block;
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tec);
+    margin-bottom: 2px;
+  }
+
+  .fin-semana {
+    background: var(--bg-card);
+    border: 2px dashed var(--line);
+    border-radius: 14px;
+    padding: 36px 20px;
+    text-align: center;
+    color: var(--ink-mute);
+  }
+
+  .fin-semana h2 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 5vw, 28px);
+    margin-bottom: 4px;
+    color: var(--ink-soft);
+  }
+
+  .fin-semana p { font-size: 14px; }
+
+  /* ============================
+     BARRA DE ACCIONES FLOTANTE
+     ============================ */
+  .actions {
+    position: fixed;
+    bottom: calc(16px + var(--safe-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    background: var(--ink);
+    padding: 8px;
+    border-radius: 999px;
+    box-shadow: 0 10px 40px -6px rgba(28, 33, 40, 0.45);
+    z-index: 10;
+    max-width: calc(100% - 32px);
+  }
+
+  .action-btn {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .action-btn:hover { background: rgba(255, 255, 255, 0.1); }
+
+  .action-btn.primary {
+    background: var(--mate);
+    color: var(--ink);
+  }
+
+  .action-btn.primary:hover { background: #F0AE78; }
+
+  .action-btn svg { flex-shrink: 0; }
+
+  /* En móvil, botones solo con icono */
+  .action-btn .label { display: inline; }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    color: var(--ink-mute);
+    font-size: 12px;
+    font-style: italic;
+  }
+
+  /* ============================
+     PRINT
+     ============================ */
+  @media print {
+    body {
+      background: white;
+      padding: 0;
+    }
+    .actions, .nav-dias, .leyenda-wrap { display: none; }
+    .actividad { break-inside: avoid; page-break-inside: avoid; }
+    .dia { break-inside: avoid-page; }
+    header { border-color: var(--ink); }
+    h1 { font-size: 28px; }
+  }
+
+  /* ============================
+     MOBILE
+     ============================ */
+  @media (max-width: 640px) {
+    body {
+      padding: 14px 12px calc(90px + var(--safe-bottom));
+    }
+
+    header {
+      padding: 12px 0 14px;
+      margin-bottom: 14px;
+    }
+
+    h1 { font-size: 32px; }
+    .meta { font-size: 15px; }
+
+    .resumen { gap: 5px; }
+    .chip { font-size: 11px; padding: 4px 9px; }
+
+    .leyenda {
+      padding: 10px 12px;
+      font-size: 11px;
+      gap: 6px 12px;
+    }
+    .leyenda .badge { font-size: 9px; padding: 1px 5px; }
+
+    .nav-dias {
+      gap: 4px;
+    }
+    .nav-dias a {
+      padding: 8px 2px;
+    }
+    .nav-dias a .dia-num { font-size: 18px; }
+    .nav-dias a .dia-lbl { font-size: 10px; }
+    .nav-dias a .dia-count { display: none; }
+
+    .dia { margin-bottom: 28px; }
+    .dia-header h2 { font-size: 26px; }
+    .dia-header .fecha { font-size: 15px; }
+    .dia-header .count {
+      width: 100%;
+      margin-left: 0;
+      font-size: 10px;
+    }
+
+    .actividad-body { padding: 14px 15px; }
+    .actividad h3 { font-size: 18px; }
+    .actividad .detalle { font-size: 14px; }
+
+    .actividad-top { gap: 6px 8px; }
+    .profesor {
+      margin-left: 0;
+      width: 100%;
+      font-size: 11px;
+    }
+
+    .seccion { padding: 10px 12px; }
+    .seccion li { font-size: 13px; }
+
+    .roles {
+      grid-template-columns: 1fr 1fr;
+    }
+    .rol { padding: 6px 8px; font-size: 11px; }
+    .rol strong { font-size: 9px; }
+
+    /* Barra de acciones en móvil: iconos pequeños */
+    .actions { padding: 6px; gap: 4px; }
+    .action-btn {
+      padding: 9px 14px;
+      font-size: 12px;
+    }
+    /* Las etiquetas se mantienen legibles */
+  }
+
+  @media (max-width: 380px) {
+    .action-btn .label { display: none; }
+    .action-btn { padding: 10px 12px; }
+  }
+
+  /* Animaciones */
+  .actividad { animation: fadeUp 0.5s ease-out backwards; }
+  .actividad:nth-child(1) { animation-delay: 0.05s; }
+  .actividad:nth-child(2) { animation-delay: 0.1s; }
+  .actividad:nth-child(3) { animation-delay: 0.15s; }
+  .actividad:nth-child(4) { animation-delay: 0.2s; }
+  .actividad:nth-child(5) { animation-delay: 0.25s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .actividad { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="eyebrow">Agenda Escolar · 5°A</div>
+    <h1>Semana de <em>Gianna</em></h1>
+    <p class="meta">Lunes 20 — Domingo 26 de Abril, 2026</p>
+
+    <div class="resumen">
+      <span class="chip"><span class="num">4</span> Sumativas</span>
+      <span class="chip"><span class="num">5</span> Formativas</span>
+      <span class="chip"><span class="num">1</span> Asignación</span>
+      <span class="chip"><span class="num">1</span> Recreación</span>
+    </div>
+  </header>
+
+  <div class="leyenda-wrap">
+    <div class="leyenda">
+      <span><span class="badge sumativa">SUM</span> se califica</span>
+      <span><span class="badge formativa">FORM</span> práctica</span>
+      <span><span class="badge asignacion">ASIG</span> sin nota</span>
+      <span><span class="badge recreacion">REC</span> recreación</span>
+    </div>
+  </div>
+
+  <nav class="nav-dias" aria-label="Navegación por días">
+    <a href="#lunes"><span class="dia-num">20</span><span class="dia-lbl">Lun</span><span class="dia-count">5 act.</span></a>
+    <a href="#martes"><span class="dia-num">21</span><span class="dia-lbl">Mar</span><span class="dia-count">1 act.</span></a>
+    <a href="#miercoles"><span class="dia-num">22</span><span class="dia-lbl">Mié</span><span class="dia-count">3 act.</span></a>
+    <a href="#jueves"><span class="dia-num">23</span><span class="dia-lbl">Jue</span><span class="dia-count">3 act.</span></a>
+    <a href="#viernes"><span class="dia-num">24</span><span class="dia-lbl">Vie</span><span class="dia-count">1 act.</span></a>
+    <a href="#finde"><span class="dia-num">25</span><span class="dia-lbl">Fin</span><span class="dia-count">libre</span></a>
+  </nav>
+
+  <!-- LUNES -->
+  <section class="dia" id="lunes">
+    <div class="dia-header">
+      <h2>Lunes</h2>
+      <span class="fecha">20 de abril</span>
+      <span class="count">5 actividades</span>
+    </div>
+
+    <div class="actividades">
+
+      <article class="actividad" style="--materia-color: var(--sociales);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Estudios Sociales</span>
+            <span class="badge sumativa">Sumativa</span>
+            <span class="profesor">Prof. Aylin Castillo</span>
+          </div>
+          <h3>Día de la Tierra</h3>
+          <p class="detalle">Taller en clase: cada estudiante debe traer frases sobre el cuidado de la tierra para colocar en un mural. Las frases deben ir en tamaño 22, negrita, cursiva.</p>
+          <div class="seccion">
+            <div class="seccion-titulo">◉ Materiales a traer</div>
+            <ul>
+              <li>Frases impresas (tamaño 22, negrita, cursiva)</li>
+              <li>½ cartulina blanca</li>
+              <li>Goma líquida que pegue bien (no de barra)</li>
+              <li>2 hojas de papel construcción azul</li>
+              <li>2 hojas de papel construcción verde</li>
+              <li>2 hojas blancas</li>
+              <li>Tijera</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="actividad" style="--materia-color: var(--mate);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Matemáticas</span>
+            <span class="badge sumativa">Sumativa</span>
+            <span class="profesor">Prof. Carolina Guevara</span>
+          </div>
+          <h3>Ejercicio 3 — Cálculos combinados</h3>
+          <p class="detalle">Cálculos combinados de multiplicación, sumas y restas en un círculo hasta el 50.</p>
+        </div>
+      </article>
+
+      <article class="actividad" style="--materia-color: var(--mate);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Matemáticas</span>
+            <span class="badge formativa">Formativa</span>
+            <span class="profesor">Prof. Carolina Guevara</span>
+          </div>
+          <h3>Divisiones</h3>
+          <p class="detalle">Práctica de divisiones en clase.</p>
+          <div class="seccion">
+            <div class="seccion-titulo">◉ Recordatorio</div>
+            <ul>
+              <li>Evitar dejar en casa libros y cuadernos.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="actividad" style="--materia-color: var(--espanol);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Español</span>
+            <span class="badge asignacion">Asignación</span>
+            <span class="profesor">Prof. Nayrobis Cobas</span>
+          </div>
+          <h3>Mampara de poetas panameños</h3>
+          <p class="detalle">Día del Idioma y del Libro. Cada grupo debe confeccionar una mampara mediana con información sobre un poeta panameño. Cada equipo se distribuyó las preguntas que deben investigar.</p>
+          <div class="seccion">
+            <div class="seccion-titulo">◉ Materiales a traer</div>
+            <ul>
+              <li>Título del poeta</li>
+              <li>Nombre del poeta</li>
+              <li>Información (respuestas a las preguntas distribuidas)</li>
+              <li>Imágenes para ilustrar</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="actividad" style="--materia-color: var(--espanol);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Español</span>
+            <span class="badge sumativa">Sumativa</span>
+            <span class="profesor">Prof. Nayrobis Cobas</span>
+          </div>
+          <h3>Proyecto 1: Caligrama</h3>
+          <p class="detalle">Entrega del caligrama. Ver información adjunta en el portal.</p>
+          <div class="seccion">
+            <div class="seccion-titulo">◉ Recurso de apoyo</div>
+            <ul>
+              <li>Video guía: <a href="https://www.youtube.com/watch?v=SLRKwqUSYew" target="_blank" rel="noopener">youtube.com/watch?v=SLRKwqUSYew</a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- MARTES -->
+  <section class="dia" id="martes">
+    <div class="dia-header">
+      <h2>Martes</h2>
+      <span class="fecha">21 de abril</span>
+      <span class="count">1 actividad</span>
+    </div>
+
+    <div class="actividades">
+      <article class="actividad" style="--materia-color: var(--listen);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Listening</span>
+            <span class="badge sumativa">Sumativa</span>
+            <span class="profesor">Prof. Cheryl Dramen</span>
+          </div>
+          <h3>Quiz 1 — Understand Maps</h3>
+          <p class="detalle">Listening quiz sobre comprensión de mapas e instrucciones de ubicación. Los detalles están en la carta adjunta.</p>
+          <div class="seccion">
+            <div class="seccion-titulo">◉ Sugerencia de estudio</div>
+            <ul>
+              <li>Buscar mapas en internet y dar instrucciones en inglés para ubicar edificios.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- MIÉRCOLES -->
+  <section class="dia" id="miercoles">
+    <div class="dia-header">
+      <h2>Miércoles</h2>
+      <span class="fecha">22 de abril</span>
+      <span class="count">3 actividades</span>
+    </div>
+
+    <div class="actividades">
+
+      <article class="actividad" style="--materia-color: var(--arte);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Expresiones Artísticas</span>
+            <span class="badge formativa">Formativa</span>
+            <span class="profesor">Prof. Lorena Lobo</span>
+          </div>
+          <h3>Máscara de Anubis</h3>
+          <p class="detalle"><strong>Introducción:</strong> explicación de la metodología en clase y observación del video guía.</p>
+          <p class="detalle"><strong>Desarrollo:</strong> preparar molde de máscara recortando y uniendo las plantillas de papel. Repaso en clase de las máscaras más reconocidas del arte egipcio. Actividad sumativa.</p>
+          <p class="detalle"><strong>Cierre:</strong> 10 minutos antes de terminar, dejar el área de trabajo limpia y organizada.</p>
+          <div class="seccion">
+            <div class="seccion-titulo">◉ Materiales a traer</div>
+            <ul>
+              <li>Hojas impresas con la plantilla</li>
+              <li>Cartulina blanca</li>
+              <li>Tijeras</li>
+              <li>Pegamento en barra</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="actividad" style="--materia-color: var(--tec);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Tecnología</span>
+            <span class="badge formativa">Formativa</span>
+            <span class="profesor">Prof. María Elena Montero</span>
+          </div>
+          <h3>Clase 4 — Diseño 3D de escuela ideal</h3>
+          <p class="detalle"><strong>Objetivo:</strong> utilizar herramientas digitales para visualizar representaciones 3D de un espacio.</p>
+          <p class="detalle"><strong>Inicio:</strong> dinámica "Materializando ideas" observando un dibujo digital de una escuela y reflexionando si es posible replicar la propia en el computador. Reto: crear un modelo digital 3D que muestre la infraestructura y espacios principales de la institución (vinculado con Estudios Sociales).</p>
+          <div class="seccion">
+            <div class="seccion-titulo">◉ Organización por equipos · Roles</div>
+            <div class="roles">
+              <div class="rol"><strong>Científico</strong>Analiza la diferencia entre diseños 2D y 3D</div>
+              <div class="rol"><strong>Diseñador</strong>Dibuja el plano de la escuela en papel como guía inicial</div>
+              <div class="rol"><strong>Administrador</strong>Lista los edificios esenciales y crea el enlace en Tinkercad</div>
+              <div class="rol"><strong>Ingeniero</strong>Supervisa la construcción del modelo 3D</div>
+              <div class="rol"><strong>Comunicador</strong>Envía el resultado por correo</div>
+            </div>
+          </div>
+          <div class="seccion">
+            <div class="seccion-titulo">◉ Desarrollo y Cierre</div>
+            <ul>
+              <li><strong>Ejecución STEAM:</strong> los equipos ingresan a Tinkercad para construir el modelo 3D usando figuras geométricas, bajo supervisión del Ingeniero.</li>
+              <li><strong>Integración TIC:</strong> descargar la imagen del modelo y practicar el envío vía correo electrónico (Gmail), aprendiendo a adjuntar archivos correctamente.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="actividad" style="--materia-color: var(--espanol);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Español</span>
+            <span class="badge sumativa">Sumativa</span>
+            <span class="profesor">Prof. Nayrobis Cobas</span>
+          </div>
+          <h3>Proyecto 2: Mampara de poetas panameños</h3>
+          <p class="detalle">Entrega del proyecto grupal de la mampara. Ver información adjunta en el portal.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- JUEVES -->
+  <section class="dia" id="jueves">
+    <div class="dia-header">
+      <h2>Jueves</h2>
+      <span class="fecha">23 de abril</span>
+      <span class="count">3 actividades</span>
+    </div>
+
+    <div class="actividades">
+
+      <article class="actividad" style="--materia-color: var(--arte);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Expresiones Artísticas</span>
+            <span class="badge formativa">Formativa</span>
+            <span class="profesor">Prof. Lorena Lobo</span>
+          </div>
+          <h3>Máscara de Anubis (continuación)</h3>
+          <p class="detalle">Segunda sesión del taller. Continuación del molde iniciado el miércoles. Actividad sumativa. Cierre: 10 minutos antes dejar el área limpia.</p>
+          <div class="seccion">
+            <div class="seccion-titulo">◉ Materiales (mismos del miércoles)</div>
+            <ul>
+              <li>Hojas impresas con la plantilla</li>
+              <li>Cartulina blanca, tijeras, pegamento en barra</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="actividad" style="--materia-color: var(--english);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">English</span>
+            <span class="badge sumativa">Sumativa</span>
+            <span class="profesor">Prof. Mariam Jaramillo</span>
+          </div>
+          <h3>Ejercicio 3 — Unit 2: The Seasons</h3>
+          <p class="detalle">Examen sobre la Unidad 2. Cubre vocabulario y dos puntos gramaticales.</p>
+          <div class="seccion">
+            <div class="seccion-titulo">◉ Contenido a repasar</div>
+            <ul>
+              <li><strong>Vocabulary 1:</strong> SB página 18–19</li>
+              <li><strong>Vocabulary 2:</strong> SB página 22</li>
+              <li><strong>Grammar 1:</strong> <em>be going to</em> para planes / <em>will</em> y <em>be going to</em> para predicciones — SB página 20–22 · WB página 18–19</li>
+              <li><strong>Grammar 2:</strong> comparaciones con <em>(not) as … as</em> — SB página 23 · WB página 21</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="actividad" style="--materia-color: var(--espanol);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Español</span>
+            <span class="badge recreacion">Recreación</span>
+            <span class="profesor">Prof. Nayrobis Cobas</span>
+          </div>
+          <h3>Día del Libro y del Idioma</h3>
+          <p class="detalle">Se invita a participar del concurso de disfraces literarios en honor al Día del Libro y del Idioma. Ver invitación adjunta en el portal.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- VIERNES -->
+  <section class="dia" id="viernes">
+    <div class="dia-header">
+      <h2>Viernes</h2>
+      <span class="fecha">24 de abril</span>
+      <span class="count">1 actividad</span>
+    </div>
+
+    <div class="actividades">
+      <article class="actividad" style="--materia-color: var(--tec);">
+        <div class="barra-materia"></div>
+        <div class="actividad-body">
+          <div class="actividad-top">
+            <span class="materia-tag">Tecnología</span>
+            <span class="badge formativa">Formativa</span>
+            <span class="profesor">Prof. María Elena Montero</span>
+          </div>
+          <h3>Clase 4 — Diseño 3D (repaso)</h3>
+          <p class="detalle">Nueva explicación y repaso de la Clase 4: Diseño 3D de escuela ideal. Misma metodología de Tinkercad y roles por equipo.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FIN DE SEMANA -->
+  <section class="dia" id="finde">
+    <div class="fin-semana">
+      <h2>Fin de semana libre</h2>
+      <p>Sábado 25 y Domingo 26 · sin actividades asignadas</p>
+    </div>
+  </section>
+
+  <footer>
+    Actualizado el 18 de abril de 2026 · Fuente: Portal del colegio
+  </footer>
+
+</div>
+
+<!-- Barra de acciones flotante -->
+<div class="actions" role="toolbar" aria-label="Acciones">
+  <a href="agenda_gianna_impresion_tabloide_11x17.pdf" download class="action-btn primary" aria-label="Descargar PDF imprimible (tabloide 11x17)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span class="label">Descargar PDF</span>
+  </a>
+  <button class="action-btn" onclick="window.print()" aria-label="Imprimir esta página">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    <span class="label">Imprimir</span>
+  </button>
+</div>
+
+</body>
+</html>
