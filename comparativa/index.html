@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mereb hoy vs. Mereb Nova — comparativa del rediseño">
+<title>Mereb Nova · Comparativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF6EF;
+    --card: #fff;
+    --ink: #1F242C;
+    --ink-soft: #4A5260;
+    --ink-mute: #8B94A3;
+    --line: #EAE2D4;
+    --accent: #E8935A;
+    --bad: #C94F4F;
+    --ok: #4E9A6C;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at top left, rgba(233,192,80,.07), transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(127,182,133,.06), transparent 50%);
+    color: var(--ink);
+    font-family: "Nunito", sans-serif;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+  /* Hero */
+  header { padding: 64px 0 44px; text-align: center; }
+  .eyebrow {
+    font-size: 12px; font-weight: 800; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--ink-mute); margin-bottom: 10px;
+  }
+  h1 {
+    font-family: "Fraunces", serif; font-weight: 900;
+    font-size: clamp(34px, 6vw, 60px); letter-spacing: -.02em; line-height: 1.02;
+  }
+  h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+  .sub {
+    font-family: "Fraunces", serif; font-style: italic;
+    font-size: clamp(16px, 2.6vw, 21px); color: var(--ink-soft); margin-top: 12px;
+  }
+  .cta-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 999px; text-decoration: none;
+    font-weight: 800; font-size: 15px; transition: transform .15s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--ink); color: #fff; }
+  .btn.ghost { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+
+  /* Problemas */
+  .problemas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 10px 0 30px; }
+  .problema {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 22px; box-shadow: 0 8px 24px -18px rgba(31,36,44,.25);
+  }
+  .problema .n {
+    font-family: "Fraunces", serif; font-size: 30px; font-weight: 900; color: var(--accent);
+  }
+  .problema h3 { font-family: "Fraunces", serif; font-size: 19px; margin: 6px 0 6px; }
+  .problema p { font-size: 14px; color: var(--ink-soft); }
+
+  /* Secciones de comparación */
+  .comp { padding: 44px 0 10px; }
+  .comp-head { max-width: 760px; margin-bottom: 22px; }
+  .comp-head .num {
+    font-size: 11px; font-weight: 800; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--ink-mute);
+  }
+  .comp-head h2 {
+    font-family: "Fraunces", serif; font-weight: 700;
+    font-size: clamp(24px, 4.4vw, 36px); letter-spacing: -.02em; margin: 4px 0 8px;
+  }
+  .comp-head p { color: var(--ink-soft); font-size: 15.5px; }
+
+  .panes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .pane { min-width: 0; }
+  .pane-label {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    padding: 5px 13px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .pane-label.hoy { background: rgba(201,79,79,.1); color: #A33A3A; }
+  .pane-label.nova { background: rgba(78,154,108,.12); color: #33714B; }
+  .pane img {
+    width: 100%; height: auto; display: block; border-radius: 14px;
+    border: 1px solid var(--line); box-shadow: 0 14px 40px -20px rgba(31,36,44,.35);
+  }
+  .pane .cap { font-size: 13px; color: var(--ink-soft); margin-top: 9px; padding: 0 4px; }
+  .pane .cap b { color: var(--ink); }
+
+  /* Bugs */
+  .bugs {
+    margin: 54px 0; background: var(--ink); color: #fff; border-radius: 22px; padding: 34px;
+  }
+  .bugs h2 { font-family: "Fraunces", serif; font-size: clamp(22px, 4vw, 30px); margin-bottom: 6px; }
+  .bugs .sub2 { color: rgba(255,255,255,.6); font-size: 14.5px; margin-bottom: 20px; }
+  .bugs ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px 26px; }
+  .bugs li {
+    font-size: 14px; color: rgba(255,255,255,.85);
+    padding-left: 24px; position: relative;
+  }
+  .bugs li::before { content: "✕"; position: absolute; left: 0; color: #F0A0A0; font-weight: 800; }
+
+  /* Docente teaser */
+  .docente-teaser {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 30px; align-items: center;
+    background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+    padding: 36px; margin-bottom: 60px;
+  }
+  .docente-teaser h2 { font-family: "Fraunces", serif; font-size: clamp(22px, 4vw, 32px); letter-spacing: -.02em; }
+  .docente-teaser p { color: var(--ink-soft); font-size: 15.5px; margin: 10px 0 18px; }
+  .docente-teaser img {
+    width: 100%; border-radius: 14px; border: 1px solid var(--line);
+    box-shadow: 0 14px 40px -20px rgba(31,36,44,.35);
+  }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 26px 0 40px;
+    text-align: center; color: var(--ink-mute); font-size: 13px; font-style: italic;
+  }
+
+  @media (max-width: 800px) {
+    .problemas { grid-template-columns: 1fr; }
+    .panes { grid-template-columns: 1fr; }
+    .bugs ul { grid-template-columns: 1fr; }
+    .docente-teaser { grid-template-columns: 1fr; padding: 26px; }
+    header { padding: 44px 0 30px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="eyebrow">Propuesta de rediseño · 2026</div>
+  <h1>Mereb, repensado<br>para las <em>familias</em></h1>
+  <p class="sub">La misma información del colegio — presentada para entenderse en segundos</p>
+  <div class="cta-row">
+    <a class="btn primary" href="../prototipo/index.html">Ver la demo para familias →</a>
+    <a class="btn ghost" href="../prototipo/docente.html">Ver la vista del docente →</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="problemas">
+    <div class="problema">
+      <div class="n">1</div>
+      <h3>Le habla al colegio, no a la familia</h3>
+      <p>Lo primero al entrar hoy son banners de venta dirigidos a directores. Los datos del estudiante quedan abajo del pliegue. En Nova, la semana del estudiante <em>es</em> la pantalla principal.</p>
+    </div>
+    <div class="problema">
+      <div class="n">2</div>
+      <h3>La navegación entierra lo diario</h3>
+      <p>Ver la agenda de la semana toma hoy 5 pasos entre menús con jerga interna. En Nova son 5 secciones claras: Semana, Notas, Mensajes, Pagos, Estudiante.</p>
+    </div>
+    <div class="problema">
+      <div class="n">3</div>
+      <h3>Datos ilegibles</h3>
+      <p>Notas sin fecha ni nombre (N1…N14), tablas en mayúsculas, colores sin leyenda. En Nova cada dato tiene contexto: qué actividad fue, cuándo, de qué tipo y cómo leerla.</p>
+    </div>
+  </div>
+</div>
+
+<section class="comp wrap" id="agenda">
+  <div class="comp-head">
+    <div class="num">01 · La agenda semanal</div>
+    <h2>De tablas apiladas a tarjetas que se leen de un vistazo</h2>
+    <p>Materias con código de color consistente, tipo de actividad siempre explicado, materiales y sugerencias de estudio destacados. El día de hoy resaltado, y todo imprimible para la nevera.</p>
+  </div>
+  <div class="panes">
+    <div class="pane">
+      <span class="pane-label hoy">✕ Mereb hoy</span>
+      <img src="img/actual-agenda.png" alt="Guía semanal actual: tablas HTML apiladas" loading="lazy">
+      <p class="cap">Encabezados tipo <b>5-A(--LISTENING) Prof:…</b>, colores sin leyenda, tres controles distintos para cambiar de vista.</p>
+    </div>
+    <div class="pane">
+      <span class="pane-label nova">✓ Mereb Nova</span>
+      <img src="img/nova-agenda.png" alt="Agenda Nova: tarjetas por actividad" loading="lazy">
+      <p class="cap">Cada actividad es una tarjeta con su materia, tipo, docente, materiales y sugerencia de estudio. <b>Hoy</b> siempre a un toque.</p>
+    </div>
+  </div>
+</section>
+
+<section class="comp wrap" id="notas">
+  <div class="comp-head">
+    <div class="num">02 · Las calificaciones</div>
+    <h2>Cada nota con nombre, fecha y contexto</h2>
+    <p>Hoy es imposible saber qué fue el 2.50 de la columna “N1”. En Nova cada calificación dice qué actividad fue, cuándo y de qué tipo — y el sistema señala solo dónde enfocar el apoyo.</p>
+  </div>
+  <div class="panes">
+    <div class="pane">
+      <span class="pane-label hoy">✕ Mereb hoy</span>
+      <img src="img/actual-notas.png" alt="Notas diarias actuales: grilla N1 a N14" loading="lazy">
+      <p class="cap">Columnas <b>N1…N14</b> sin fechas ni nombres de actividad. Rojo y verde sin explicación del umbral.</p>
+    </div>
+    <div class="pane">
+      <span class="pane-label nova">✓ Mereb Nova</span>
+      <img src="img/nova-notas.png" alt="Notas Nova: tarjetas por materia con contexto" loading="lazy">
+      <p class="cap">Promedio general con la escala explicada, tarjeta <b>“Dónde enfocar el apoyo”</b> y detalle expandible por materia.</p>
+    </div>
+  </div>
+</section>
+
+<section class="comp wrap" id="mensajes">
+  <div class="comp-head">
+    <div class="num">03 · La comunicación</div>
+    <h2>De webmail del 2005 a mensajes con prioridad</h2>
+    <p>Los comunicados del colegio no necesitan CC, BCC, carpetas ni cuota de espacio. Necesitan leerse: quién escribe, si es urgente, de qué materia, y si trae adjunto.</p>
+  </div>
+  <div class="panes">
+    <div class="pane">
+      <span class="pane-label hoy">✕ Mereb hoy</span>
+      <img src="img/actual-mensajes.png" alt="Mensajería actual: clon de cliente de correo" loading="lazy">
+      <p class="cap">Bandeja tipo correo con <b>11 páginas</b>, campos CC/BCC para leer un mensaje y barra de “espacio utilizado”.</p>
+    </div>
+    <div class="pane">
+      <span class="pane-label nova">✓ Mereb Nova</span>
+      <img src="img/nova-mensajes.png" alt="Mensajes Nova: lista clara con filtros" loading="lazy">
+      <p class="cap">Filtros simples, etiquetas de <b>urgencia y materia</b>, no leídos visibles y respuesta directa en el panel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="comp wrap" id="pagos">
+  <div class="comp-head">
+    <div class="num">04 · Los pagos</div>
+    <h2>El saldo al frente, sin pasos de más</h2>
+    <p>Hoy hay que seleccionar al único estudiante de la cuenta en cada pestaña para ver un dato. En Nova el saldo, su desglose, el vencimiento y el botón de pago están en la primera pantalla.</p>
+  </div>
+  <div class="panes">
+    <div class="pane">
+      <span class="pane-label hoy">✕ Mereb hoy</span>
+      <img src="img/actual-pagos.png" alt="Estado de cuenta actual" loading="lazy">
+      <p class="cap">Tres pestañas, selector de estudiante repetido, publicidad dentro del flujo de pago y elementos rotos.</p>
+    </div>
+    <div class="pane">
+      <span class="pane-label nova">✓ Mereb Nova</span>
+      <img src="img/nova-pagos.png" alt="Pagos Nova: saldo, desglose y comprobantes" loading="lazy">
+      <p class="cap">Saldo con desglose y <b>fecha de vencimiento</b>, aviso del recargo, comprobantes y estado de cuenta juntos.</p>
+    </div>
+  </div>
+</section>
+
+<section class="comp wrap" id="inicio">
+  <div class="comp-head">
+    <div class="num">05 · La primera pantalla</div>
+    <h2>El estudiante primero — no la publicidad</h2>
+    <p>Hoy el acceso recibe al acudiente con tres banners de venta pensados para directores de colegio. En Nova, cada pantalla existe para responder una pregunta de la familia.</p>
+  </div>
+  <div class="panes">
+    <div class="pane">
+      <span class="pane-label hoy">✕ Mereb hoy</span>
+      <img src="img/actual-inicio.png" alt="Pantalla principal actual con banners publicitarios" loading="lazy">
+      <p class="cap">“Lo nuevo”: <b>QR-School, Umáximo, Orion</b> — productos para directores, mostrados a los padres antes que los datos de su hijo.</p>
+    </div>
+    <div class="pane">
+      <span class="pane-label nova">✓ Mereb Nova</span>
+      <img src="img/nova-inicio.png" alt="Perfil del estudiante en Nova" loading="lazy">
+      <p class="cap">Perfil claro del estudiante: asistencia, disciplina, documentos y datos del acudiente — <b>cero publicidad</b>.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="bugs">
+    <h2>Además: los defectos que hoy conviven con las familias</h2>
+    <p class="sub2">Documentados con capturas en la auditoría (julio 2026)</p>
+    <ul>
+      <li>El perfil de la estudiante muestra la foto de una profesora</li>
+      <li>“Período en curso: Primer trimestre (Ya finalizo)” en pleno segundo trimestre</li>
+      <li>Trimestres sin calificar aparecen como 0.00 — parece que reprobó todo</li>
+      <li>Promedios mostrados como 4.622222 y “---&gt; 0.000000”</li>
+      <li>Magroom (el aula virtual) no muestra ningún contenido</li>
+      <li>Sesión con temporizador de 30 minutos que expulsa al usuario</li>
+      <li>“Estimado/a rAcudiente”, “contrasena”, “al alance” en textos oficiales</li>
+      <li>Materias listadas como --SCIENCE, ------ENGLISH, 5-A(--LISTENING)</li>
+      <li>Modal de advertencia que hay que cerrar cada vez para ver el boletín</li>
+      <li>Comprobantes y estado de cuenta vacíos hasta seleccionar al único estudiante</li>
+    </ul>
+  </div>
+
+  <div class="docente-teaser">
+    <div>
+      <h2>¿Y cómo cargan esto los docentes?</h2>
+      <p>La calidad de la información empieza por quien la escribe. La vista del docente permite crear una actividad en menos de un minuto, viendo en vivo exactamente cómo la recibirá la familia — el mismo formato, sin tablas que llenar.</p>
+      <a class="btn primary" href="../prototipo/docente.html">Probar la vista del docente →</a>
+    </div>
+    <img src="img/nova-docente.png" alt="Vista del docente: formulario con vista previa en vivo" loading="lazy">
+  </div>
+</div>
+
+<footer>
+  Mereb Nova · propuesta independiente de rediseño con datos de demostración · julio 2026
+</footer>
+
+</body>
+</html>
