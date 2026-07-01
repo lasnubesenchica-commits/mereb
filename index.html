@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mereb Nova · Rediseño de la plataforma escolar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,900;1,9..144,400&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#FAF6EF; --ink:#1F242C; --soft:#4A5260; --mute:#8B94A3; --line:#EAE2D4; --accent:#E8935A; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at top left, rgba(233,192,80,.08), transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(127,182,133,.06), transparent 50%);
+    color: var(--ink);
+    font-family: "Nunito", sans-serif;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 30px 20px;
+  }
+  .caja { max-width: 640px; text-align: center; }
+  h1 {
+    font-family: "Fraunces", serif; font-weight: 900;
+    font-size: clamp(38px, 8vw, 64px); letter-spacing: -.02em; line-height: 1;
+  }
+  h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+  .sub {
+    font-family: "Fraunces", serif; font-style: italic;
+    color: var(--soft); font-size: clamp(15px, 3vw, 19px); margin: 12px 0 34px;
+  }
+  .enlaces { display: grid; gap: 12px; }
+  a.tarjeta {
+    display: flex; align-items: center; gap: 16px; text-align: left;
+    background: #fff; border: 1px solid var(--line); border-radius: 16px;
+    padding: 18px 22px; text-decoration: none; color: var(--ink);
+    box-shadow: 0 8px 24px -18px rgba(31,36,44,.25);
+    transition: transform .15s, border-color .15s;
+  }
+  a.tarjeta:hover { transform: translateY(-2px); border-color: var(--ink); }
+  a.tarjeta .emoji { font-size: 26px; }
+  a.tarjeta b { display: block; font-size: 16px; }
+  a.tarjeta span { font-size: 13px; color: var(--mute); }
+  a.tarjeta .ir { margin-left: auto; font-weight: 800; color: var(--accent); }
+  footer { margin-top: 30px; font-size: 12px; color: var(--mute); font-style: italic; }
+</style>
+</head>
+<body>
+  <div class="caja">
+    <h1>Mereb<em>·nova</em></h1>
+    <p class="sub">Propuesta de rediseño de la plataforma escolar — julio 2026</p>
+    <div class="enlaces">
+      <a class="tarjeta" href="prototipo/index.html">
+        <span class="emoji">👨‍👩‍👧</span>
+        <span><b>Demo para familias</b><span>Semana, notas, mensajes, pagos y perfil del estudiante</span></span>
+        <span class="ir">→</span>
+      </a>
+      <a class="tarjeta" href="prototipo/docente.html">
+        <span class="emoji">🍎</span>
+        <span><b>Vista del docente</b><span>Crear una actividad con vista previa en vivo</span></span>
+        <span class="ir">→</span>
+      </a>
+      <a class="tarjeta" href="comparativa/index.html">
+        <span class="emoji">⚖️</span>
+        <span><b>Comparativa</b><span>Mereb hoy vs. Mereb Nova, pantalla por pantalla</span></span>
+        <span class="ir">→</span>
+      </a>
+    </div>
+    <footer>Prototipo independiente con datos de demostración</footer>
+  </div>
+</body>
+</html>

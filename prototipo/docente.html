@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF6EF">
+<meta name="description" content="Mereb Nova · Vista del docente — crear actividades con vista previa en vivo">
+<title>Mereb Nova · Docente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ---- estilos propios de la vista docente ---- */
+  .docente-layout {
+    display: grid;
+    grid-template-columns: 1fr 0.92fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .form-card { padding: 22px; }
+  .form-card h2 {
+    font-family: "Fraunces", serif;
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .campo { margin-bottom: 16px; }
+  .campo > label {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 7px;
+  }
+  .campo input[type="text"], .campo textarea, .campo select {
+    width: 100%;
+    font-family: "Nunito", sans-serif;
+    font-size: 14.5px;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 13px;
+  }
+  .campo textarea { min-height: 74px; resize: vertical; }
+  .campo input:focus, .campo textarea:focus, .campo select:focus {
+    outline: 2px solid rgba(232, 147, 90, 0.45);
+    outline-offset: 1px;
+  }
+
+  .pills { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pills button {
+    border: 1px solid var(--line);
+    background: var(--card);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    transition: all 0.15s;
+  }
+  .pills button.sel { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .pills button .pt {
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    margin-right: 6px;
+    background: var(--pc, var(--ink-mute));
+  }
+  .pills.tipos button.sel { background: var(--pc); border-color: var(--pc); color: #fff; }
+
+  .chips-input { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .chips-input .chip button {
+    border: none; background: none; padding: 0 0 0 4px;
+    color: var(--ink-mute); font-weight: 800; font-size: 12px;
+  }
+  .chips-input input {
+    flex: 1; min-width: 150px;
+    border: 1px dashed var(--line) !important;
+    background: transparent !important;
+  }
+
+  .form-foot { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+  .btn-publicar {
+    border: none;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 800;
+    font-size: 14.5px;
+    border-radius: 999px;
+    padding: 12px 26px;
+  }
+  .btn-publicar:disabled { opacity: 0.4; cursor: not-allowed; }
+  .form-foot .hint { font-size: 12px; color: var(--ink-mute); }
+
+  /* Vista previa */
+  .preview-col { position: sticky; top: 118px; }
+  .preview-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+  }
+  .preview-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .preview-dia {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin: 10px 2px 0;
+  }
+
+  .publicadas { margin-top: 34px; }
+  .publicadas h2 {
+    font-family: "Fraunces", serif;
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .publicadas .sub {
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
+  }
+  .pub-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .pub-row .dia-tag {
+    font-family: "Fraunces", serif;
+    font-weight: 900;
+    font-size: 16px;
+    background: var(--line-soft);
+    border-radius: 9px;
+    padding: 4px 11px;
+    text-align: center;
+    line-height: 1.1;
+  }
+  .pub-row .dia-tag small { display: block; font-family: "Nunito"; font-size: 9px; font-weight: 800; letter-spacing: .08em; color: var(--ink-mute); }
+  .pub-row .t { flex: 1; font-weight: 700; min-width: 0; }
+  .pub-row .t small { display: block; font-weight: 600; color: var(--ink-mute); font-size: 12px; }
+
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: calc(24px + var(--safe-bottom));
+    transform: translate(-50%, 80px);
+    background: var(--ink);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-pop);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 90;
+  }
+  .toast.show { transform: translate(-50%, 0); }
+
+  .link-familia {
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--ink-mute);
+  }
+
+  @media (max-width: 860px) {
+    .docente-layout { grid-template-columns: 1fr; }
+    .preview-col { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Mereb<em>·nova</em></div>
+    <a class="link-familia" href="index.html">← Vista de la familia</a>
+    <div class="student-chip">
+      <span class="avatar" style="background:#D9B23C">NC</span>
+      <span class="who">
+        <strong>Prof. Nayrobis Cobas</strong>
+        <span>Docente · Consejera 5°A</span>
+      </span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="view-head">
+    <div class="eyebrow">Vista del docente · 5°A</div>
+    <h1>Nueva <em>actividad</em></h1>
+    <p class="meta">Lo que escribas aquí se publica exactamente como lo verá la familia — a la derecha</p>
+  </div>
+
+  <div class="docente-layout">
+    <form class="card form-card" id="form" autocomplete="off">
+      <h2>Detalles</h2>
+
+      <div class="campo">
+        <label>Día · semana del 6 al 10 de julio</label>
+        <div class="pills" id="pick-dia"></div>
+      </div>
+
+      <div class="campo">
+        <label>Materia</label>
+        <div class="pills" id="pick-materia"></div>
+      </div>
+
+      <div class="campo">
+        <label>Tipo de actividad</label>
+        <div class="pills tipos" id="pick-tipo"></div>
+      </div>
+
+      <div class="campo">
+        <label for="f-titulo">Título</label>
+        <input type="text" id="f-titulo" placeholder="Ej.: Ejercicio 3 — Los adjetivos" maxlength="80">
+      </div>
+
+      <div class="campo">
+        <label for="f-detalle">Descripción para la familia</label>
+        <textarea id="f-detalle" placeholder="Qué se hará, qué se evalúa, indicaciones importantes…"></textarea>
+      </div>
+
+      <div class="campo">
+        <label for="f-material">Materiales a traer <span style="font-weight:600;text-transform:none;letter-spacing:0">· Enter para agregar</span></label>
+        <div class="chips-input" id="chips-materiales">
+          <input type="text" id="f-material" placeholder="Ej.: Cartulina blanca">
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="f-estudio">Sugerencia de estudio <span style="font-weight:600;text-transform:none;letter-spacing:0">· opcional</span></label>
+        <input type="text" id="f-estudio" placeholder="Ej.: Repasar el vocabulario #2 del cuaderno">
+      </div>
+
+      <div class="form-foot">
+        <button type="submit" class="btn-publicar" id="btn-publicar" disabled>Publicar para 5°A</button>
+        <span class="hint">Las familias lo verán al instante en su agenda.</span>
+      </div>
+    </form>
+
+    <div class="preview-col">
+      <div class="preview-label">Así lo verá la familia</div>
+      <div id="preview"></div>
+      <p class="preview-dia" id="preview-dia"></p>
+    </div>
+  </div>
+
+  <section class="publicadas">
+    <h2>Publicadas esta semana</h2>
+    <p class="sub">Semana del 6 al 10 de julio · 5°A</p>
+    <div id="lista-publicadas"></div>
+  </section>
+</main>
+
+<footer>
+  Mereb Nova · vista del docente · prototipo con datos de demostración
+</footer>
+
+<div class="toast" id="toast">✓ Actividad publicada para las familias de 5°A</div>
+
+<script src="data.js"></script>
+<script src="docente.js"></script>
+</body>
+</html>
