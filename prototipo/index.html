@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF6EF">
+<meta name="description" content="Mereb Nova · Prototipo de rediseño de la plataforma escolar">
+<title>Mereb Nova · Prototipo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Mereb<em>·nova</em></div>
+    <div class="student-chip">
+      <span class="avatar" id="avatar-top">GL</span>
+      <span class="who">
+        <strong id="nombre-top">Gianna Lorena</strong>
+        <span id="grado-top">5°A · Esclavas del Sagrado Corazón</span>
+      </span>
+    </div>
+  </div>
+  <nav class="nav" id="nav-desktop" aria-label="Navegación principal"></nav>
+</header>
+
+<main>
+  <section class="view" id="view-semana" aria-label="Agenda de la semana"></section>
+  <section class="view" id="view-notas" aria-label="Calificaciones"></section>
+  <section class="view" id="view-mensajes" aria-label="Mensajes"></section>
+  <section class="view" id="view-pagos" aria-label="Pagos"></section>
+  <section class="view" id="view-perfil" aria-label="Estudiante"></section>
+</main>
+
+<footer>
+  Mereb Nova · prototipo de rediseño con datos de demostración · julio 2026
+</footer>
+
+<nav class="tabbar" aria-label="Navegación móvil">
+  <div class="tabbar-inner" id="nav-mobile"></div>
+</nav>
+
+<!-- Panel de detalle de mensaje -->
+<div class="overlay" id="overlay"></div>
+<aside class="panel" id="panel-mensaje" aria-label="Detalle del mensaje">
+  <div class="panel-head">
+    <span class="avatar" id="msg-avatar"></span>
+    <span class="who">
+      <strong id="msg-remitente"></strong>
+      <span id="msg-fecha"></span>
+    </span>
+    <button class="cerrar" id="msg-cerrar" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="panel-body">
+    <h2 id="msg-asunto"></h2>
+    <p class="cuerpo" id="msg-cuerpo"></p>
+    <div id="msg-adjunto"></div>
+  </div>
+  <div class="panel-foot">
+    <input type="text" placeholder="Responder al remitente…" aria-label="Responder">
+    <button>Enviar</button>
+  </div>
+</aside>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
